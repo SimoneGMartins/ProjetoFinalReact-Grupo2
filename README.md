@@ -1,2 +1,1 @@
-# ProjetoFinalReact-Grupo2
-Projeto Final da Disciplina de React
+## Trabalho de React, Grupo 2
