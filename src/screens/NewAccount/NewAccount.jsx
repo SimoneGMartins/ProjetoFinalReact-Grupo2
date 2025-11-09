@@ -16,10 +16,8 @@ const NewAccount = () => {
     event.preventDefault();
     setError("")
     const success = await newUser(email, password);
-    console.log(success)
     if (success) navigate("/login");
     else setError("Email ou senha existentes!");
-    console.log({ email, password });
   };
   return (
     <section className={styles["loginContainer"]}>
