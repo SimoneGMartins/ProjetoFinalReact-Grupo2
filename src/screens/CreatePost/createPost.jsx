@@ -5,6 +5,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import styles from "./createPost.module.css"
 
 
 const schema = yup.object({
@@ -43,7 +44,7 @@ export default function CreatePost() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(
+       await axios.post(
         "https://jsonplaceholder.typicode.com/posts",
         {
           title: data.title,
