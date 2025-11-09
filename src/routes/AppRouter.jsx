@@ -7,15 +7,18 @@ import PostDetails from "../screens/PostDetails/postDetails";
 import Profile from "../screens/Profile/profile";
 import MainLayout from "../layout/MainLayout";
 import LoginLayout from "../layout/LoginLayout";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import NewAccount from "../screens/NewAccount/NewAccount";
 
 const AppRouter = () => {
   return (
     <Routes>
       <Route element={<LoginLayout />}>
         <Route path="/login" element={<Login />} />
+        <Route path="/new-account" element={<NewAccount />}/>
       </Route>
 
-      <Route element={<MainLayout />}>
+      <Route element={ <ProtectedRoute > <MainLayout /> </ProtectedRoute> }>
         <Route path="/" element={<Home />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/edit-post" element={<EditPost />} />

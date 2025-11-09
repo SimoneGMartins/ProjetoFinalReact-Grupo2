@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import styles from "./newAccount.module.css";
 import InputEmail from "../../components/ui/InputEmail/InputEmail";
 import InputPassword from "../../components/ui/InputPassword/InputPassword";
-import styles from "./login.module.css";
-import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
-const Login = () => {
-  const { login } = useAuth();
+const NewAccount = () => {
+  const { newUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,15 +14,17 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const success = await login(email, password);
-    if (success) navigate("/");
-    else setError("Email ou senha incorretos!");
+    setError("")
+    const success = await newUser(email, password);
+    console.log(success)
+    if (success) navigate("/login");
+    else setError("Email ou senha existentes!");
+    console.log({ email, password });
   };
   return (
     <section className={styles["loginContainer"]}>
-      <h1>Blog Jardim Digital</h1>
       <div className={styles["loginBox"]}>
-        <h2>Bem vindo</h2>
+        <h2>Criar conta</h2>
         <form onSubmit={handleSubmit} className={styles["loginForm"]}>
           <InputEmail
             value={email}
@@ -34,11 +36,10 @@ const Login = () => {
           />
           <div className={styles["containerLinks"]}>
             <button type="submit" className={styles["buttonSubmit"]}>
-              Sign In
+             Criar Conta
             </button>
             <div>
-              <Link to="/new-account">Criar Conta</Link>
-              <a href="#">Esqueceu a senha?</a>
+              <Link to="/login">Voltar para o Login</Link>
             </div>
           </div>
         </form>
@@ -48,4 +49,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default NewAccount;
