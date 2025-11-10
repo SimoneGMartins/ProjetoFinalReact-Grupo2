@@ -45,7 +45,7 @@ export default function CreatePost() {
   const onSubmit = async (data) => {
     try {
        await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
+        "https://69112ffd7686c0e9c20cae72.mockapi.io/posts",
         {
           title: data.title,
           body: data.body,
@@ -64,44 +64,48 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="container" style={styles.container}>
-      <h1 style={styles.title}>Criar Novo Post</h1>
+  
+  <div className={styles.createPostWrapper}>
+    <div className={styles.createPostCard}>
+      <h1 className={styles.createPostTitle}>Criar Novo Post</h1>
 
-      <form style={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        
-        
-        <div style={styles.field}>
-          <label style={styles.label}>Título *</label>
+      <form className={styles.createPostForm} onSubmit={handleSubmit(onSubmit)}>
+
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>Título *</label>
           <input
             type="text"
             placeholder="Digite o título"
             {...register("title")}
-            style={styles.input}
+            className={styles.formInput}
           />
           {errors.title && (
-            <span style={styles.error}>{errors.title.message}</span>
+            <span className={styles.errorMessage}>{errors.title.message}</span>
           )}
         </div>
 
-      
-        <div style={styles.field}>
-          <label style={styles.label}>Conteúdo *</label>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>Conteúdo *</label>
           <textarea
             placeholder="Digite o conteúdo do post"
             rows="6"
             {...register("body")}
-            style={styles.textarea}
+            className={styles.formTextarea}
           ></textarea>
           {errors.body && (
-            <span style={styles.error}>{errors.body.message}</span>
+            <span className={styles.errorMessage}>{errors.body.message}</span>
           )}
         </div>
 
-       
-        <button type="submit" style={styles.button} disabled={isSubmitting}>
+        <button
+          type="submit"
+          className={styles.createPostButton}
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Enviando..." : "Criar Post"}
         </button>
       </form>
     </div>
-  );
-}
+  </div>
+);
+};
