@@ -91,7 +91,7 @@
 .darkModeToggle {
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: #91A394;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 0.375rem;
@@ -130,7 +130,7 @@
 
 .logoutButton {
   background: var(--accent-color);
-  color: white;
+  color: #91A394;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
@@ -147,7 +147,7 @@
 
 .loginButton {
   background: var(--accent-color);
-  color: white;
+  color: #91A394;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
@@ -161,7 +161,7 @@
   transform: translateY(-1px);
 }
 
-/* Responsive */
+/* Responsividade */
 @media (max-width: 768px) {
   .headerContent {
     padding: 1rem;

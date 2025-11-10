@@ -13,20 +13,30 @@ import NewAccount from "../screens/NewAccount/NewAccount";
 const AppRouter = () => {
   return (
     <Routes>
+
+      {/* Rotas SEM Sidebar */}
       <Route element={<LoginLayout />}>
         <Route path="/login" element={<Login />} />
-        <Route path="/new-account" element={<NewAccount />}/>
-        <Route path="/" element={<Home />} />
+        <Route path="/new-account" element={<NewAccount />} />
       </Route>
 
-      <Route element={ <ProtectedRoute > <MainLayout /> </ProtectedRoute> }>
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/edit-post/:id" element={<EditPost />} />
-        <Route path="/post-details/:id" element={<PostDetails />} />
-        <Route path="/profile" element={<Profile />} />
+      {/* Rotas COM Sidebar (Layout principal) */}
+      <Route element={<MainLayout />}>
+        {/* Home não precisa estar protegida */}
+        <Route path="/" element={<Home />} />
+
+        {/* Rotas protegidas ficam dentro do ProtectedRoute */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/post-details/:id" element={<PostDetails />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Route>
+
     </Routes>
   );
 };
 
 export default AppRouter;
+
