@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Profile.css"; // importa o CSS
+import "./profile.module.css"; // importa o CSS
 
 export default function Profile() {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();

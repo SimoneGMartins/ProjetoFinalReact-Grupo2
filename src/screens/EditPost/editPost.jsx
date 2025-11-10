@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/AuthContext";
-import "./EditPost.css"; 
+import { useAuth } from "../../context/AuthContext";
+import "./editPost.module.css"; 
 
 export default function EditPost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user } =  useAuth();
   const [post, setPost] = useState({ title: "", body: "" });
   const [loading, setLoading] = useState(true);
 
