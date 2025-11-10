@@ -1,20 +1,20 @@
-import { useState } from 'react';
+/*import { useState } from 'react';*/
 import { Link } from 'react-router-dom';
 import styles from './header.module.css';
 
-const Header = ({ onSearch, toggleSidebar, isDarkMode, toggleDarkMode }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const Header = ({ /*onSearch,*/ toggleSidebar, isDarkMode, toggleDarkMode }) => {
+  /*const [searchTerm,*/ /*setSearchTerm] = useState('');*/
 
   // Verificar se o usuário está logado
   const isLoggedIn = localStorage.getItem('user');
   const userName = isLoggedIn ? JSON.parse(isLoggedIn).name : null;
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (onSearch) {
-      onSearch(searchTerm);
-    }
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   if (onSearch) {
+  //     onSearch(searchTerm);
+  //   }
+  // };
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -45,7 +45,7 @@ const Header = ({ onSearch, toggleSidebar, isDarkMode, toggleDarkMode }) => {
           <span>Blog</span>
         </Link>
 
-        {/* Barra de pesquisa */}
+        {/* Barra de pesquisa
         <form onSubmit={handleSearch} className={styles.searchForm}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
@@ -58,7 +58,7 @@ const Header = ({ onSearch, toggleSidebar, isDarkMode, toggleDarkMode }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className={styles.searchInput}
           />
-        </form>
+        </form> */}
 
         {/* Actions */}
         <div className={styles.actions}>
