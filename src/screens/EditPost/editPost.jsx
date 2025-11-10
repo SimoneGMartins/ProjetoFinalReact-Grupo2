@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
-import "./editPost.module.css"; 
+import styles from "./editPost.module.css"; 
 
 export default function EditPost() {
   const { id } = useParams();
@@ -47,8 +47,8 @@ export default function EditPost() {
   }
 
   return (
-    <div className="editpost-container">
-      <div className="editpost-card">
+    <div className={styles["editpost-container"]}>
+      <div className={styles["editpost-card"]}>
         <h1>Editar Post</h1>
         <form onSubmit={handleSubmit}>
           <label>Título</label>
@@ -68,7 +68,7 @@ export default function EditPost() {
             required
           />
 
-          <div className="editpost-buttons">
+          <div className={styles["editpost-buttons"]}>>
             <button
               type="button"
               className="cancel"
