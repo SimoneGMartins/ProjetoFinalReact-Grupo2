@@ -1,3 +1,19 @@
+:root {
+  --text-color: #000;
+  --bg-color: #ffffff;
+}
+
+.dark {
+  --text-color: #ffffff;
+  --bg-color: #1e1e1e;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
 /* Reset e configurações globais */
 * {
   margin: 0;
@@ -19,19 +35,6 @@
   
   /* Fonte */
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-/* Dark Mode */
-[data-theme="dark"] {
-  --primary-green: #7A8F7D;
-  --primary-red: #C45555;
-  --background-main: #1A1A1A;
-  --background-secondary: #2A2A2A;
-  --background-post: #2F2F2F;
-  --background-badge: #3A3A3A;
-  --border-color: #404040;
-  --text-primary: #E6E2DC;
-  --text-secondary: #B0B0B0;
 }
 
 body {
@@ -110,4 +113,14 @@ a {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Modo Escuro Global */
+body.dark-mode {
+  background-color: #222;
+  color: #f8f6f3;
+}
+
+body.dark-mode a {
+  color: black;
 }

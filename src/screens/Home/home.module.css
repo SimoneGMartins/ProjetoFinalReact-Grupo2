@@ -5,7 +5,6 @@
   min-height: calc(100vh - 56px - 200px);
 }
 
-/* Page Header */
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -57,7 +56,6 @@
   transform: translateY(-1px);
 }
 
-/* Filter Section */
 .filterSection {
   margin-bottom: 24px;
 }
@@ -102,7 +100,7 @@
   background: var(--background-secondary);
 }
 
-/* Posts Grid */
+
 .postsGrid {
   display: grid;
   gap: 20px;
@@ -200,16 +198,29 @@
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-primary);
   transition: all 0.2s ease;
-}
+} 
 
+/* Hover no modo claro */
 .readMoreButton:hover {
   background: var(--background-secondary);
+  color: var(--text-primary);
   transform: translateX(4px);
 }
 
-/* Load More */
+:root.dark .readMoreButton {
+  background: #222;           
+  color: #fff;
+  border-color: #555;
+}
+
+:root.dark .readMoreButton:hover {
+  background: #333;          
+  color: #fff;              
+}
+
+
+
 .loadMoreSection {
   display: flex;
   justify-content: center;
@@ -231,7 +242,6 @@
   transform: scale(1.05);
 }
 
-/* Empty State */
 .emptyState {
   text-align: center;
   padding: 60px 20px;
@@ -253,7 +263,7 @@
   font-size: 14px;
 }
 
-/* Modal */
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -349,7 +359,7 @@
   font-weight: 600;
 }
 
-/* Loading Spinner */
+
 .spinner {
   border: 4px solid var(--background-secondary);
   border-top: 4px solid var(--primary-green);
@@ -365,7 +375,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .container {
     padding: 16px;
