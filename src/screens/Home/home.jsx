@@ -187,7 +187,7 @@ const Home = () => {
               </p>
 
               <Link 
-                to={`/post/${post.id}`}
+                to={`/post-details/${post.id}`}
                 className={styles.readMoreButton}
               >
                 Read More
