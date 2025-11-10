@@ -92,7 +92,7 @@ const Header = ({ /*onSearch,*/ toggleSidebar, isDarkMode, toggleDarkMode }) => 
               <button className={styles.logoutButton} onClick={handleLogout}>Sair</button>
             </div>
           ) : (
-            <Link to="/login" className={styles.loginButton}>Entrar</Link>
+            <Link to="/login" className={styles.loginButton} id='btnLogin'>Entrar</Link>
           )}
         </div>
       </div>
