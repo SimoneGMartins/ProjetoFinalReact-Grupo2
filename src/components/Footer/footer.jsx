@@ -2,26 +2,20 @@ import React from "react";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import styles from "./footer.module.css";
 
-const Footer = () => {
+const Footer = ({ isDarkMode }) => {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isDarkMode ? styles.dark : ""}`}>
+      
       <div className={styles.info}>
-        <p> © {new Date().getFullYear()} - Flores & Códigos</p> 
-        <p>🌱 Cultivando ideias com carinho.</p>
+        <p> © {new Date().getFullYear()} - Jardim Digital 🌱 </p> 
       </div>
 
       <div className={styles.social}>
         <span>Nossas redes sociais:</span>
         <div className={styles.icons}>
-          <a href="#" aria-label="Instagram">
-            <Instagram size={24} />
-          </a>
-          <a href="#" aria-label="Facebook">
-            <Facebook size={24} />
-          </a>
-          <a href="#" aria-label="Youtube">
-            <Youtube size={24} />
-          </a>
+          <a href="#" aria-label="Instagram"><Instagram size={24} /></a>
+          <a href="#" aria-label="Facebook"><Facebook size={24} /></a>
+          <a href="#" aria-label="Youtube"><Youtube size={24} /></a>
         </div>
       </div>
     </footer>
@@ -29,3 +23,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
