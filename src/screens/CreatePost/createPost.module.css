@@ -93,6 +93,9 @@
 
 
 @media (max-width: 768px) {
+    .createPostWrapper{
+        padding: 2rem 0 0 2rem;
+    }
   .createPostCard {
     padding: 1.4rem;
   }
