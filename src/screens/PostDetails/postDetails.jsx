@@ -79,19 +79,28 @@ return (
                 <h3 className={styles.commentsCount}>Comentarios ({comments.length})</h3>
             </div>
             <hr style={{ margin: '30px 0', border: '1px solid #eee' }} />
-              
-              <ul>
-        {comments.map(comment => (
-          <li key={comment.id} className={styles.commentItem}> 
                            <div className={styles.postTitleRepeated}> 
                          <strong>Título:</strong> 
                          <p>{post.title}</p>
                           </div>
 
-                    <div className={styles.postBlockRepeated}>
-                      <strong>Conteúdo:</strong>
-                            <p>{post.body}</p> 
-                      </div>
+                      <div className={styles.postBlockRepeated}>
+                        <strong>Conteúdo:</strong>
+                        <p>{post.body}</p> 
+
+                        <button 
+                           onClick={toggleLike} 
+                           className={styles['post-like-button']} // Classe para estilizar
+                           style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '30px', marginTop: '10px' }}>
+                          <span role="img" aria-label="coração">
+                           {isLiked ? '❤️' : '🤍'} 
+                          </span>
+                           </button>
+
+              </div>
+              <ul>
+        {comments.map(comment => (
+          <li key={comment.id} className={styles.commentItem}> 
                     
                     <hr style={{ margin: '15px 0', border: '1px dotted #ccc' }} /> 
 
