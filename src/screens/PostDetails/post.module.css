@@ -1,1 +1,156 @@
-/* batatinha */
+/* ====================================
+   ESTILOS GERAIS DA PÁGINA
+   ==================================== */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Arial', sans-serif;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.title {
+    color: #91A394; 
+    font-size: 2.5em;
+    border-bottom: 2px solid #E6E2DC;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.bodyText {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    font-size: 1.1em;
+}
+
+
+hr {
+    border: 0;
+    border-top: 1px solid #E6E2DC; 
+    margin: 30px 0;
+}
+
+/* ====================================
+   LISTA E ITENS DE COMENTÁRIOS
+   ==================================== */
+
+.commentsTitle {
+    color: #91A394; 
+    font-size: 1.6em;
+    margin-bottom: 8px;
+}
+
+.commentsCount {
+    color: #777;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.commentItem {
+    list-style: none;
+    border: 1px solid #E6E2DC; 
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #FAFAFA; 
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.contentWrapper ul {
+    padding-left: 0;
+}
+
+/* ====================================
+   ESTILOS DE BLOCOS REPETIDOS (TÍTULO, BODY, COMENTÁRIO)
+   ==================================== */
+
+
+.postTitleRepeated {
+    margin-bottom: 10px; 
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #D26A6A; 
+    
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+
+.postBlockRepeated {
+    margin-bottom: 15px; 
+    padding: 10px;
+    background-color: #E6E2DC; 
+    border-left: 3px solid #91A394; 
+    border-radius: 4px;
+    
+    font-size: 0.95em;
+    color: #555; 
+    line-height: 1.5;
+}
+
+.commentBody {
+    margin-top: 15px; 
+    padding: 12px;
+    background-color: #FFFFFF; 
+    border: 1px solid #D26A6A; 
+    border-radius: 4px;
+
+    font-size: 1em;
+    color: #333; 
+    font-style: italic;
+}
+
+.postTitleRepeated strong,
+.postBlockRepeated strong,
+.commentBody strong {
+    display: block; 
+    color: #D26A6A; 
+    font-size: 0.9em;
+    margin-bottom: 5px; 
+    text-transform: uppercase;
+}
+
+.postTitleRepeated p,
+.postBlockRepeated p,
+.commentBody p {
+    margin: 0;
+}
+
+
+/* ====================================
+   FORMULÁRIO E BOTÕES
+   ==================================== */
+
+.commentForm {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.commentTextarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 120px;
+    background-color: #FFFFFF;
+}
+
+.commentForm button {
+    background-color: #91A394; 
+    color: #f9f6f6;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: large;
+}
+.comment-heart-icon {
+    color: #D26A6A !important; 
+    font-size: 30px; 
+}
