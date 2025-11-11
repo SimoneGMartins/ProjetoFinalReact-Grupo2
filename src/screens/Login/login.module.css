@@ -5,7 +5,7 @@
   overflow: hidden;
   background-position: center;
   display: flex;
-  min-height: 90vh; /* fazer um calculo para subtrair a altura do header e do footer*/
+  min-height: 90vh; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@
   z-index: 2;
 }
 .loginBox {
-  background-color: #91a394;
+  background-color: var(--primary-green);
   padding: 21px;
   border-radius: 10px;
   max-width: 440px;
@@ -45,7 +45,7 @@
 }
 
 .loginBox h2 {
-  color: #2c2c2c;
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 18px;
   line-height: 100%;
@@ -59,8 +59,8 @@
   padding: 10px 13px;
   border: 1px solid #e6e2dc;
   border-radius: 8px;
-  background-color: #b06b6b;
-  color: #e6e2dc;
+  background-color: var(--primary-red);
+  color: var(--background-main);
   font-weight: 500;
   font-size: 14px;
   line-height: 100%;
@@ -101,4 +101,51 @@
   .containerLinks {
     flex-direction: column;
   }
+}
+html.dark .loginContainer::before {
+  background: #00000088;
+}
+
+html.dark .loginBox {
+  background-color: var(--background-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+html.dark .loginBox h2 {
+  color: var(--text-primary);
+}
+
+html.dark .buttonSubmit {
+  background-color: var(--primary-red);
+  color: white;
+}
+
+html.dark .containerLinks a {
+  color: var(--text-secondary);
+}
+.loginContainer {
+  width: 100%;
+  min-height: calc(105vh - 180px);
+  overflow-x: hidden;
+}
+
+html.dark .loginContainer::before {
+  background: #0000008a; 
+}
+
+html.dark .loginBox {
+  background-color: #2b2b2b;
+  border-color: #444;
+  color: #fff;
+}
+
+html.dark .buttonSubmit {
+  background-color: #8a4d4d;
+  border-color: #666;
+  color: #fff;
+}
+
+html.dark .containerLinks a {
+  color: #ddd;
 }
