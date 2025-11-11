@@ -124,3 +124,12 @@ body.dark-mode {
 body.dark-mode a {
   color: black;
 }
+
+#btnLogin{
+    color: #91A394 !important;
+}
+
+#btnLogin:hover {
+    color: #5c6b5f !important;
+
+}
