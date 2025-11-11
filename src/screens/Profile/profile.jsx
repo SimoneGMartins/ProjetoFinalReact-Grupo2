@@ -46,7 +46,7 @@ export default function Profile() {
   return (
     <div className={styles["profile-container"]}>
       <div className={styles["profile-card"]}>
-        <h1>Meu Perfil {user.email || "exemplo@email.com"}</h1>
+        <h1>Meu Perfil: {user.email || "exemplo@email.com"}</h1>
         <p className={styles["profile-email"]}>
         </p>
 
@@ -61,18 +61,22 @@ export default function Profile() {
                 <h3>{post.title}</h3>
                 <p>{post.body}</p>
                 <div lassName={styles["profile-post-actions"]}>
-                  <button
-                    className={styles["edit"]}
-                    onClick={() => navigate(`/edit/${post.id}`)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                   className={styles["delete"]}
-                    onClick={() => handleDelete(post.id)}
-                  >
-                    Excluir
-                  </button>
+                  <div className={styles["profile-post-actions"]}>
+ <div className={styles["profile-post-actions"]}>
+  <button
+    className={styles["edit"]}
+    onClick={() => navigate(`/edit-post/${post.id}`)}
+  >
+    Editar
+  </button>
+  <button
+    className={styles["delete"]}
+    onClick={() => handleDelete(post.id)}
+  >
+    Excluir
+  </button>
+</div>
+</div>
                 </div>
               </div>
             ))}
