@@ -10,22 +10,17 @@ import LoginLayout from "../layout/LoginLayout";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import NewAccount from "../screens/NewAccount/NewAccount";
 
-const AppRouter = () => {
+const AppRouter = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <Routes>
 
-      {/* Rotas SEM Sidebar */}
-      <Route element={<LoginLayout />}>
+      <Route element={<LoginLayout isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}>
         <Route path="/login" element={<Login />} />
         <Route path="/new-account" element={<NewAccount />} />
       </Route>
 
-      {/* Rotas COM Sidebar (Layout principal) */}
-      <Route element={<MainLayout />}>
-        {/* Home não precisa estar protegida */}
+      <Route element={<MainLayout isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}>
         <Route path="/" element={<Home />} />
-
-        {/* Rotas protegidas ficam dentro do ProtectedRoute */}
         <Route element={<ProtectedRoute />}>
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/edit-post/:id" element={<EditPost />} />
@@ -37,6 +32,7 @@ const AppRouter = () => {
     </Routes>
   );
 };
+
 
 export default AppRouter;
 
