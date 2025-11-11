@@ -68,7 +68,7 @@ export default function EditPost() {
             required
           />
 
-          <div className={styles["editpost-buttons"]}>>
+          <div className={styles["editpost-buttons"]}>
             <button
               type="button"
               className="cancel"
