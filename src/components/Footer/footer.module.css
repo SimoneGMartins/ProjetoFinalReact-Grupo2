@@ -50,7 +50,7 @@
 }
 
 /* Responsividade */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .footer {
     text-align: center;
     justify-content: center;

@@ -1,1 +1,109 @@
-/* // batatinha  */
+
+.createPostWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.createPostCard {
+  width: 100%;
+  max-width: 800px;
+  background: var(--background-post);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+.createPostTitle {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.createPostForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+
+.formInput,
+.formTextarea,
+.formSelect {
+  background: var(--background-main);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem;
+  color: var(--text-primary);
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(145, 163, 148, 0.25);
+}
+
+.formTextarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.errorMessage {
+  color: var(--primary-red);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+
+.createPostButton {
+  background: var(--primary-green);
+  color: white;
+  padding: 0.9rem 1.3rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.createPostButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 768px) {
+    .createPostWrapper{
+        padding: 2rem 0 0 2rem;
+    }
+  .createPostCard {
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .createPostButton {
+    width: 100%;
+    text-align: center;
+  }
+}
