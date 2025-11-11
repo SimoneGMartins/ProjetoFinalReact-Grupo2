@@ -63,7 +63,8 @@ const toggleCommentLike = (commentId) => {
   
 
 return (
-    <div className={styles.container}>
+  <div className={styles["btn-login"]}>
+  <div className={styles.container}>
         <div className={styles.contentWrapper}> 
             <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.bodyText}>{post.body}</p> 
@@ -75,7 +76,7 @@ return (
           
             <ul>
         {comments.map(comment => (
-        <li key={comment.id} className={styles.commentItem}> 
+          <li key={comment.id} className={styles.commentItem}> 
             <div className={styles.commentBody}>
                 {comment.body} - por **{comment.name}**
             </div>
@@ -90,14 +91,14 @@ return (
                 </ul>
             
             {isLoggedIn && (
-                <form onSubmit={handleNewComment} className={styles.commentForm}>
+              <form onSubmit={handleNewComment} className={styles.commentForm}>
                     <textarea 
                         value={newComment} 
                         onChange={(e) => setNewComment(e.target.value)} 
                         placeholder="Adicionar um comentario...." 
                         required 
                         className={styles.commentTextarea}
-                    />
+                        />
                     <button type="submit">Comentar</button> 
                 </form>
             )}           
@@ -105,6 +106,7 @@ return (
             <button onClick={handleLogin} className={styles["btn-login-detalhes"]} >Login</button>
         </div>
     </div>
+</div>
 );
 };
 

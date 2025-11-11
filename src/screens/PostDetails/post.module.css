@@ -40,8 +40,9 @@
 .contentWrapper h2 {
     margin-top: 40px;
     font-size: 1.5rem;
-    color: #212529;
+    color: #020a13;
 }
+
 
 .contentWrapper h3 {
     font-size: 1.1rem;
@@ -53,6 +54,7 @@
 .contentWrapper ul {
     list-style: none;
     padding: 0;
+    color : rgb(0, 0, 0);
 }
 
 .contentWrapper li {
@@ -140,3 +142,18 @@
     background-color:#B06B6B !important;
   
 }
+.btn-login{
+width: 1160;
+height: 586;
+angle: 0 deg;
+opacity: 1;
+padding: 17px;
+border-radius: 10px;
+border-width: 1px;
+background: #F0EDE9;
+border: 1px solid #E6E2DC
+
+
+}
+
+    
