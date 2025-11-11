@@ -23,14 +23,14 @@ export default function CreatePost() {
   const navigate = useNavigate();
 
   
-  const userLogged = localStorage.getItem("user");
+//  const userLogged = localStorage.getItem("user");
 
-  useEffect(() => {
-    if (!userLogged) {
-      toast.error("Você precisa estar logado para criar um post!");
-      navigate("/login");
-    }
-  }, [userLogged, navigate]);
+ // useEffect(() => {
+  //  if (!userLogged) {
+   //   toast.error("Você precisa estar logado para criar um post!");
+   //   navigate("/login");
+   // }
+  //}, [userLogged, navigate]);
 
   const {
     register,
