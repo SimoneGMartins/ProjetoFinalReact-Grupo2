@@ -1,7 +1,7 @@
 .profile-container {
   min-height: 100vh;
   background: var(--bg);
-  color: var(--text);
+  color: #FFFFFF;
   display: flex;
   justify-content: center;
   padding: 40px 20px;
@@ -12,7 +12,7 @@
 .profile-card {
   background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px #0ce01e26;
   padding: 2rem;
   max-width: 900px;
   width: 100%;
@@ -20,14 +20,13 @@
 
 .profile-card h1 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.profile-email {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+ background: #91A394;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px #FFFFFF(0, 0, 0, 0.06);
 }
 
 .profile-card h2 {
@@ -74,8 +73,8 @@
 /* AÇÕES  */
 .profile-post-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: flex-end; /* mantém os botões lado a lado à direita */
+  gap: 10px; /* controla a distância entre eles */
 }
 
 .profile-post-actions button {
@@ -88,22 +87,22 @@
 }
 
 .profile-post-actions .edit {
-  background: var(--accent);
+  background: #91A394;
   color: #fff;
 }
 
 .profile-post-actions .edit:hover {
-  background: #2563eb;
+  background: #91A394;
   transform: scale(1.03);
 }
 
 .profile-post-actions .delete {
-  background: #ef4444;
+  background: #D26A6A;
   color: #fff;
 }
 
 .profile-post-actions .delete:hover {
-  background: #dc2626;
+  background: #D26A6A;
   transform: scale(1.03);
 }
 
