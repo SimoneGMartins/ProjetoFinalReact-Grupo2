@@ -1,0 +1,72 @@
+:root {
+  --verde: #91A394;
+  --bege: #E6E2DC;
+  --branco: #FFFFFF;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--verde);
+  border-right: 1px solid var(--bege);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--branco);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu a {
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  opacity: 0.8;
+  transform: translateX(4px);
+}
+.sidebar {
+  background-color: #91A394;
+  border-right: 1px solid #91A394;
+}
+
+body.dark-mode .sidebar {
+  background-color: #44534a;
+  border-right-color: #666;
+}
+
+/* Modo Escuro */
+.dark {
+  background-color: #111; /* preto suave */
+  border-right-color: #333;
+}
+
+.dark .link {
+  color: #f8f6f3;
+}
+
+.dark .link:hover {
+  background-color: #222;
+}
+
+.dark .newPostButton {
+  background-color: #222;
+  color: #f8f6f3;
+  border-color: #444;
+}
+
+.dark .newPostButton:hover {
+  background-color: #333;
+}
