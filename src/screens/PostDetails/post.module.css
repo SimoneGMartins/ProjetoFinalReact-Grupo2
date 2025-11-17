@@ -1,1 +1,159 @@
-/* batatinha */
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    padding: 20px 0; 
+}
+
+.contentWrapper {
+    max-width: 700px; 
+    width: 90%; 
+    padding: 0 15px; 
+}
+
+.contentWrapper h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #212529; 
+}
+
+.contentWrapper p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #495057; 
+    margin-bottom: 25px;
+}
+
+.like-buttom {
+    outline: none; 
+    transition: transform 0.1s ease;
+}
+
+.like-buttom:active {
+    transform: scale(0.95);
+}
+
+.heart-icon {
+    color: red; }
+
+.contentWrapper h2 {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    color: #020a13;
+}
+
+
+.contentWrapper h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.contentWrapper ul {
+    list-style: none;
+    padding: 0;
+    color : rgb(0, 0, 0);
+}
+
+.contentWrapper li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f8f9fa;
+    font-size: 0.95rem;
+}
+
+.contentWrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.contentWrapper textarea {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    min-height: 80px;
+    resize: vertical;
+    font-size: 1rem;
+}
+
+.contentWrapper button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #91A394; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+
+
+.contentWrapper p:last-of-type {
+    color: #dc3545; 
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.contentWrapper button:last-child {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #91A394; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.commentItem {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.commentBody {
+    flex-grow: 1; 
+}
+
+.comment-like-button {
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; 
+    margin-left: 15px; 
+    padding: 0;
+    outline: none;
+}
+.comment-heart-icon {
+    color: red;
+}
+
+.btn-login-detalhes{
+    background-color:#B06B6B !important;
+  
+}
+.btn-login{
+width: 1160;
+height: 586;
+angle: 0 deg;
+opacity: 1;
+padding: 17px;
+border-radius: 10px;
+border-width: 1px;
+background: #F0EDE9;
+border: 1px solid #E6E2DC
+
+
+}
+
+    
