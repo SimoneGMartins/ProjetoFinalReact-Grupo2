@@ -11,27 +11,32 @@ const { id } = useParams();
   const [newComment, setNewComment] = useState('');
   const [isLiked, setIsLiked] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-  
-  const API_URL = 'https://69112ffd7686c0e9c20cae72.mockapi.io/posts';
+  const [userName, seUserName]= useState ('Usuario Anonimo');
 
-  useEffect(() => {
-    axios.get('https://69112ffd7686c0e9c20cae72.mockapi.io/posts')
-      .then(response => setPost(response.data))
-      .catch(error => console.error('Error ao buscar post:', error));
+   const API_URL_COMMENTS = 'https://69112ffd7686c0e9c20cae72.mockapi.io/comments';
+   const API_URL = 'https://69112ffd7686c0e9c20cae72.mockapi.io/posts';
 
-    axios.get('https://69112ffd7686c0e9c20cae72.mockapi.io/posts')
-      .then(response => {
-        setComments(response.data);
-      })
-      .catch(error => console.error('Error ao buscar comments:', error));
-  }, [id]);
+useEffect(() => { 
+  axios.get(`${API_URL}/${id}`)
+    .then(response => setPost(response.data))
+    .catch(error => console.error('Erro ao buscar post:', error));
+
+  axios.get('https://69112ffd7686c0e9c20cae72.mockapi.io/posts')
+    .then(response => {
+      setComments(response.data);
+    })
+    .catch(error => console.error('Erro ao buscar comentários:', error));
+    axios.get(`https://69112ffd7686c0e9c20cae72.mockapi.io/posts/${id}/comments`)
+
+}, [id]); 
 
   const handleNewComment = (e) => {
     e.preventDefault();
+    console.log('Botão Comentar Clicado .Enviando dados...')
     const commentData = {
       body: newComment,
       postId: id,
+      authorName:userName,
     };
     axios.post('https://69112ffd7686c0e9c20cae72.mockapi.io/posts', commentData)
       .then(response => {
@@ -47,7 +52,9 @@ const { id } = useParams();
   };
 
 const handleLogin = () => {
+    console.log('Login Clicado')
     setIsLoggedIn(true); 
+    setUserName  ('Nome do Usuário Logado');
 };
   if (!post) return <div>Loading Post ......</div>
 
@@ -66,19 +73,41 @@ return (
   <div className={styles["btn-login"]}>
   <div className={styles.container}>
         <div className={styles.contentWrapper}> 
-            <h1 className={styles.title}>{post.title}</h1>
-            <p className={styles.bodyText}>{post.body}</p> 
                                        
            <div> 
-                <h2 className={styles.commentsTitle}>Lista Comentarios</h2>
+                <h2 className={styles.commentsTitle}>Ler e Comentar</h2>
                 <h3 className={styles.commentsCount}>Comentarios ({comments.length})</h3>
             </div>
-          
-            <ul>
+            <hr style={{ margin: '30px 0', border: '1px solid #eee' }} />
+                           <div className={styles.postTitleRepeated}> 
+                         <strong>Título:</strong> 
+                         <p>{post.title}</p>
+                          </div>
+
+                      <div className={styles.postBlockRepeated}>
+                        <strong>Conteúdo:</strong>
+                        <p>{post.body}</p> 
+
+                        <button 
+                           onClick={toggleLike} 
+                           className={styles['post-like-button']} // Classe para estilizar
+                           style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '30px', marginTop: '10px' }}>
+                          <span role="img" aria-label="coração">
+                           {isLiked ? '❤️' : '🤍'} 
+                          </span>
+                           </button>
+
+              </div>
+              <ul>
         {comments.map(comment => (
           <li key={comment.id} className={styles.commentItem}> 
-            <div className={styles.commentBody}>
-                {comment.body} - por **{comment.name}**
+                    
+                    <hr style={{ margin: '15px 0', border: '1px dotted #ccc' }} /> 
+
+                      <div className={styles.commentBody}>
+                      <strong></strong>
+
+                {comment.body} -{comment.authorName}
             </div>
             <button onClick={() => toggleCommentLike(comment.id)}
                 className={styles['comment-like-button']}style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '30px' }}>
@@ -102,8 +131,8 @@ return (
                     <button type="submit">Comentar</button> 
                 </form>
             )}           
-            {!isLoggedIn && <p>Você precisa estar logado para comentar.</p>}
-            <button onClick={handleLogin} className={styles["btn-login-detalhes"]} >Login</button>
+            {!isLoggedIn && <p>Você precisa aperta + para comentar.</p>}
+            <button onClick={handleLogin} className={styles["btn-login-detalhes"]} >  ✏️  </button>
         </div>
     </div>
 </div>

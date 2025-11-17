@@ -64,6 +64,8 @@
 }
 
 .editpost-buttons button {
+  background: #91A394;
+  color: #fff;
   padding: 10px 16px;
   border: none;
   border-radius: 8px;
@@ -73,22 +75,25 @@
 }
 
 .editpost-buttons .save {
-  background: var(--accent);
-  color: #fff;
+ background: #91A394;
+  transform: scale(1.03);
 }
+
 
 .editpost-buttons .save:hover {
   background: #2563eb;
   transform: scale(1.02);
 }
 
-.editpost-buttons .cancel {
-  background: #999;
+
+
+.editpost-buttons .cancel{
+  background: var(--accent);
   color: #fff;
 }
 
-.editpost-buttons .cancel:hover {
-  background: #777;
+.editpost-buttons.cancel:hover {
+   background: #2563eb;
   transform: scale(1.02);
 }
 

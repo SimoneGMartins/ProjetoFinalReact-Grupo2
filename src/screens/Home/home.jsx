@@ -9,37 +9,38 @@ const Home = () => {
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(5);
-  const [filterType, setFilterType] = useState('title');
+  const [filterType, setFilterType] = useState('titulo');
   const [searchTerm, setSearchTerm] = useState('');
   const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
 
-  // Verificar se está logado
   const isLoggedIn = localStorage.getItem('user');
 
-  // Buscar posts da API
+  // Buscar posts da API do Render
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        
-        // Buscar dados dos usuários para ter os nomes dos autores
-        const usersResponse = await axios.get('https://jsonplaceholder.typicode.com/users');
-        const users = usersResponse.data;
-        
-        // Combinar posts com informações dos autores
-        const postsWithAuthors = response.data.map(post => {
-          const author = users.find(user => user.id === post.userId);
-          return {
-            ...post,
-            authorName: author ? author.name : 'Autor Desconhecido'
-          };
-        });
 
-        setPosts(postsWithAuthors);
-        setFilteredPosts(postsWithAuthors);
-        setDisplayedPosts(postsWithAuthors.slice(0, 5));
+        // Busca os posts reais do backend
+        const response = await axios.get('https://blogjardim.onrender.com/posts');
+        const data = response.data;
+
+        // Como sua API já traz o autor, email e comentários, não precisa buscar de outro lugar
+        const formattedPosts = data.map(post => ({
+          id: post.id,
+          titulo: post.titulo,
+          conteudo: post.conteudo,
+          autor: post.autor,
+          email: post.email,
+          dataPublicacao: post.dataPublicacao,
+          quantidadeAmeis: post.quantidadeAmeis || 0,
+          comentarios: post.comentarios || [],
+        }));
+
+        setPosts(formattedPosts);
+        setFilteredPosts(formattedPosts);
+        setDisplayedPosts(formattedPosts.slice(0, 5));
       } catch (error) {
         console.error('Erro ao buscar posts:', error);
       } finally {
@@ -59,10 +60,10 @@ const Home = () => {
     }
 
     const filtered = posts.filter(post => {
-      if (filterType === 'title') {
-        return post.title.toLowerCase().includes(searchTerm.toLowerCase());
+      if (filterType === 'titulo') {
+        return post.titulo.toLowerCase().includes(searchTerm.toLowerCase());
       } else {
-        return post.authorName.toLowerCase().includes(searchTerm.toLowerCase());
+        return post.autor.toLowerCase().includes(searchTerm.toLowerCase());
       }
     });
 
@@ -80,15 +81,8 @@ const Home = () => {
     setDisplayedPosts(filteredPosts.slice(0, visibleCount + 5));
   };
 
-  // Fechar modal
-  const closeModal = () => {
-    setShowLoginModal(false);
-  };
-
-  // Ir para login
-  const goToLogin = () => {
-    navigate('/login');
-  };
+  const closeModal = () => setShowLoginModal(false);
+  const goToLogin = () => navigate('/login');
 
   if (loading) {
     return (
@@ -100,13 +94,13 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header da página */}
+      {/* Cabeçalho */}
       <div className={styles.pageHeader}>
         <div className={styles.titleSection}>
           <h1 className={styles.pageTitle}>Todos os posts</h1>
           <span className={styles.resultCount}>{filteredPosts.length} resultados</span>
         </div>
-        
+
         {isLoggedIn && (
           <Link to="/create-post" className={styles.newPostButton}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -125,13 +119,13 @@ const Home = () => {
             onChange={(e) => setFilterType(e.target.value)}
             className={styles.filterSelect}
           >
-            <option value="title">Filtrar por Título</option>
-            <option value="author">Filtrar por Autor</option>
+            <option value="titulo">Filtrar por Título</option>
+            <option value="autor">Filtrar por Autor</option>
           </select>
 
           <input
             type="text"
-            placeholder={`Buscar por ${filterType === 'title' ? 'título' : 'autor'}...`}
+            placeholder={`Buscar por ${filterType === 'titulo' ? 'título' : 'autor'}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className={styles.filterInput}
@@ -166,31 +160,31 @@ const Home = () => {
                 <span className={styles.postBadge}>Publicado</span>
               </div>
 
-              <h2 className={styles.postTitle}>{post.title}</h2>
+              <h2 className={styles.postTitle}>{post.titulo}</h2>
 
               <div className={styles.postMeta}>
                 <div className={styles.authorInfo}>
                   <div className={styles.authorAvatar}>
-                    {post.authorName.charAt(0)}
+                    {post.autor.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p className={styles.authorName}>{post.authorName}</p>
+                    <p className={styles.authorName}>{post.autor}</p>
                     <p className={styles.postDate}>
-                      {new Date().toLocaleDateString('pt-BR')}
+                      {new Date(post.dataPublicacao).toLocaleDateString('pt-BR')}
                     </p>
                   </div>
                 </div>
               </div>
 
               <p className={styles.postExcerpt}>
-                {post.body.substring(0, 150)}...
+                {post.conteudo.substring(0, 150)}...
               </p>
 
               <Link 
                 to={`/post-details/${post.id}`}
                 className={styles.readMoreButton}
               >
-                Read More
+                Ler mais
               </Link>
             </article>
           ))
