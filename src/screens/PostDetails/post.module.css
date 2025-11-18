@@ -1,156 +1,217 @@
-/* ====================================
-   ESTILOS GERAIS DA PÁGINA
-   ==================================== */
+.page {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    background: var(--background-main);
+}
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    font-family: 'Arial', sans-serif;
-    background-color: #FFFFFF;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
+    width: 100%;
+    max-width: 880px;
+    background: var(--background-main);
+    padding: 35px 40px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.postSection {
+    margin-bottom: 40px;
 }
 
 .title {
-    color: #91A394; 
-    font-size: 2.5em;
-    border-bottom: 2px solid #E6E2DC;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 15px;
 }
 
-.bodyText {
-    color: #555;
+.postTitleRepeated {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.postBlockRepeated {
+    background: var(--background-post);
+    padding: 14px 18px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-green);
+    font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 35px;
-    font-size: 1.1em;
+    color: var(--text-secondary);
 }
 
+.likeBtn {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform .2s;
+}
+
+.likeBtn:hover {
+    transform: scale(1.15);
+}
 
 hr {
-    border: 0;
-    border-top: 1px solid #E6E2DC; 
+    border: none;
+    border-top: 1px solid var(--border-color);
     margin: 30px 0;
 }
 
-/* ====================================
-   LISTA E ITENS DE COMENTÁRIOS
-   ==================================== */
+.commentsSection {
+    background: var(--background-secondary);
+    border-radius: 12px;
+    padding: 25px 28px;
+    border: 1px solid var(--border-color);
+}
 
 .commentsTitle {
-    color: #91A394; 
-    font-size: 1.6em;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
 }
 
 .commentsCount {
-    color: #777;
-    margin-bottom: 25px;
-    font-size: 0.9em;
-}
-
-.commentItem {
-    list-style: none;
-    border: 1px solid #E6E2DC; 
-    padding: 1px;
+    font-size: .9rem;
+    color: var(--text-secondary);
     margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #FAFAFA; 
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
 }
 
-.contentWrapper ul {
-    padding-left: 0;
-}
-
-/* ====================================
-   ESTILOS DE BLOCOS REPETIDOS (TÍTULO, BODY, COMENTÁRIO)
-   ==================================== */
-
-
-.postTitleRepeated {
-    margin-bottom: 10px; 
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #D26A6A; 
-    
-    font-size: 1.1em;
-    color: #333;
-    font-weight: bold;
-}
-
-
-.postBlockRepeated {
-    margin-bottom: 15px; 
-    padding: 10px;
-    background-color: #E6E2DC; 
-    border-left: 3px solid #91A394; 
-    border-radius: 4px;
-    
-    font-size: 0.95em;
-    color: #555; 
-    line-height: 1.5;
-}
-
-.commentBody {
-    margin-top: 15px; 
-    padding: 12px;
-    background-color: #FFFFFF; 
-    border: 1px solid #D26A6A; 
-    border-radius: 4px;
-
-    font-size: 1em;
-    color: #333; 
-    font-style: italic;
-}
-
-.postTitleRepeated strong,
-.postBlockRepeated strong,
-.commentBody strong {
-    display: block; 
-    color: #D26A6A; 
-    font-size: 0.9em;
-    margin-bottom: 5px; 
-    text-transform: uppercase;
-}
-
-.postTitleRepeated p,
-.postBlockRepeated p,
-.commentBody p {
+.commentList {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
+.commentItem {
+    background: var(--background-main);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
-/* ====================================
-   FORMULÁRIO E BOTÕES
-   ==================================== */
+.commentBody {
+    max-width: 90%;
+}
+
+.commentBody strong {
+    color: var(--primary-red);
+    font-size: .9rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.commentLikeBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    margin-left: 10px;
+}
 
 .commentForm {
-    margin-top: 1px;
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 12px;
+    margin-top: 25px;
 }
 
 .commentTextarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-height: 120px;
-    background-color: #FFFFFF;
+    width: 100%;
+    min-height: 110px;
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--background-main);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    resize: vertical;
 }
 
 .commentForm button {
-    background-color: #91A394; 
-    color: #f9f6f6;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: large;
+    width: 160px;
+    padding: 12px;
+    background: var(--primary-green);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1.05rem;
 }
-.comment-heart-icon {
-    color: #D26A6A !important; 
-    font-size: 30px; 
+
+/* Mensagem pedindo login */
+.needLogin {
+    font-size: .9rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+/* Botão de login (ícone) */
+.loginBtn {
+    background: transparent;
+    font-size: 28px;
+    margin-top: 15px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 22px 20px;
+        border-radius: 10px;
+    }
+
+    .postTitleRepeated {
+        font-size: 1.6rem;
+    }
+
+    .postBlockRepeated {
+        font-size: 1rem;
+        padding: 12px 14px;
+    }
+
+    .commentItem {
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 15px;
+    }
+
+    .commentBody {
+        max-width: 100%;
+    }
+
+    .commentForm button {
+        width: 100%;
+    }
+
+    .likeBtn {
+        font-size: 26px;
+    }
+
+    .commentLikeBtn {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .postTitleRepeated {
+        font-size: 1.4rem;
+    }
+
+    .title, .commentsTitle {
+        font-size: 1.2rem;
+    }
+
+    .commentTextarea {
+        min-height: 90px;
+        font-size: 0.95rem;
+    }
+
+    .container {
+        padding: 18px 16px;
+    }
 }
