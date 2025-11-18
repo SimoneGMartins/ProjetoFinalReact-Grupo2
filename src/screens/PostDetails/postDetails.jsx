@@ -1,147 +1,147 @@
-import React from 'react'
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import styles from './post.module.css'
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import styles from "./post.module.css";
 
-const PostDetails = () => {
-const { id } = useParams();
+export default function PostDetails() {
+  const { id } = useParams();
+  const API_BASE = "https://blogjardim.onrender.com";
+
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, seUserName]= useState ('Usuario Anonimo');
+  const [userName] = useState("Usuário Anônimo");
 
-   const API_URL_COMMENTS = 'https://69112ffd7686c0e9c20cae72.mockapi.io/comments';
-   const API_URL = 'https://69112ffd7686c0e9c20cae72.mockapi.io/posts';
+  useEffect(() => {
+    axios
+      .get(`${API_BASE}/posts/${id}`)
+      .then((res) => setPost(res.data))
+      .catch((err) => console.error("Erro ao carregar post:", err));
 
-useEffect(() => { 
-  axios.get(`${API_URL}/${id}`)
-    .then(response => setPost(response.data))
-    .catch(error => console.error('Erro ao buscar post:', error));
+    axios
+      .get(`${API_BASE}/posts/${id}/comentarios`)
+      .then((res) => setComments(res.data))
+      .catch((err) => console.error("Erro ao carregar comentários:", err));
 
-  axios.get('https://69112ffd7686c0e9c20cae72.mockapi.io/posts')
-    .then(response => {
-      setComments(response.data);
-    })
-    .catch(error => console.error('Erro ao buscar comentários:', error));
-    axios.get(`https://69112ffd7686c0e9c20cae72.mockapi.io/posts/${id}/comments`)
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
+    setIsLiked(likedPosts.includes(id));
+  }, [id]);
 
-}, [id]); 
+  if (!post) return <p>Carregando...</p>;
 
-  const handleNewComment = (e) => {
-    e.preventDefault();
-    console.log('Botão Comentar Clicado .Enviando dados...')
-    const commentData = {
-      body: newComment,
-      postId: id,
-      authorName:userName,
-    };
-    axios.post('https://69112ffd7686c0e9c20cae72.mockapi.io/posts', commentData)
-      .then(response => {
-        setComments([...comments, response.data]);
-        setNewComment('');
+  function toggleLike() {
+    if (isLiked) return;
+
+    axios
+      .post(`${API_BASE}/posts/${id}/amei`)
+      .then(() => {
+        // Atualiza o post no frontend
+        axios.get(`${API_BASE}/posts/${id}`).then((res) => setPost(res.data));
+
+        setIsLiked(true);
+
+        const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
+        localStorage.setItem("likedPosts", JSON.stringify([...likedPosts, id]));
       })
-      //.catch(error => console.alert("Error ao enviar comentário:")); 
-  };
+      .catch((err) => console.error("Erro ao dar amei:", err));
+  }
 
-  // eslint-disable-next-line no-unused-vars
-  const toggleLike = () => {
-    setIsLiked(!isLiked);
-  };
+  function toggleCommentLike(commentId) {
+    setComments((prev) =>
+      prev.map((c) => (c.id === commentId ? { ...c, liked: !c.liked } : c))
+    );
+  }
 
-const handleLogin = () => {
-    console.log('Login Clicado')
-    setIsLoggedIn(true); 
-    setUserName  ('Nome do Usuário Logado');
-};
-  if (!post) return <div>Loading Post ......</div>
+  // Novo comentário
+  function handleNewComment(e) {
+    e.preventDefault();
 
-const toggleCommentLike = (commentId) => {
-    const updatedComments = comments.map(comment => {    
-        if (comment.id === commentId) {return {
-                ...comment,
-                isCommentLiked: !comment.isCommentLiked,
-            };
-        } return comment;
-    }); setComments(updatedComments); 
-};
-  
+    const commentData = {
+      autor: userName,
+      conteudo: newComment,
+      email: "email@usuario.com",
+      data_comentario: new Date(),
+    };
 
-return (
-  <div className={styles["btn-login"]}>
-  <div className={styles.container}>
-        <div className={styles.contentWrapper}> 
-                                       
-           <div> 
-                <h2 className={styles.commentsTitle}>Ler e Comentar</h2>
-                <h3 className={styles.commentsCount}>Comentarios ({comments.length})</h3>
-            </div>
-            <hr style={{ margin: '30px 0', border: '1px solid #eee' }} />
-                           <div className={styles.postTitleRepeated}> 
-                         <strong>Título:</strong> 
-                         <p>{post.title}</p>
-                          </div>
+    axios
+      .post(`${API_BASE}/posts/${id}/comentarios`, commentData)
+      .then((res) => {
+        setComments((prev) => [...prev, res.data]);
+        setNewComment("");
+      })
+      .catch((err) => console.error("Erro ao comentar:", err));
+  }
 
-                      <div className={styles.postBlockRepeated}>
-                        <strong>Conteúdo:</strong>
-                        <p>{post.body}</p> 
+  return (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <div className={styles.postSection}>
+          <h2 className={styles.title}>Post</h2>
 
-                        <button 
-                           onClick={toggleLike} 
-                           className={styles['post-like-button']} // Classe para estilizar
-                           style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '30px', marginTop: '10px' }}>
-                          <span role="img" aria-label="coração">
-                           {isLiked ? '❤️' : '🤍'} 
-                          </span>
-                           </button>
+          <h3 className={styles.postTitleRepeated}>{post.titulo}</h3>
 
-              </div>
-              <ul>
-        {comments.map(comment => (
-          <li key={comment.id} className={styles.commentItem}> 
-                    
-                    <hr style={{ margin: '15px 0', border: '1px dotted #ccc' }} /> 
+          <div className={styles.postBlockRepeated}>
+            <p>{post.conteudo}</p>
+          </div>
 
-                      <div className={styles.commentBody}>
-                      <strong></strong>
-
-                {comment.body} -{comment.authorName}
-            </div>
-            <button onClick={() => toggleCommentLike(comment.id)}
-                className={styles['comment-like-button']}style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '30px' }}>
-                <span role="img" aria-label="coração" className={comment.isCommentLiked ? styles['comment-heart-icon'] : ''} >
-                    {comment.isCommentLiked ? '❤' : '🤍'} 
-                </span>
-                </button>
-               </li>
-                 ))}
-                </ul>
-            
-            {isLoggedIn && (
-              <form onSubmit={handleNewComment} className={styles.commentForm}>
-                    <textarea 
-                        value={newComment} 
-                        onChange={(e) => setNewComment(e.target.value)} 
-                        placeholder="Adicionar um comentario...." 
-                        required 
-                        className={styles.commentTextarea}
-                        />
-                    <button type="submit">Comentar</button> 
-                </form>
-            )}           
-            {!isLoggedIn && <p>Você precisa aperta + para comentar.</p>}
-            <button onClick={handleLogin} className={styles["btn-login-detalhes"]} >  ✏️  </button>
+          <button onClick={toggleLike} className={styles.likeBtn}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill={isLiked ? "red" : "none"}
+              stroke="red"
+              strokeWidth="2"
+              style={{ marginRight: "6px" }}
+            >
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 
+                       6 4 4 6.5 4c1.74 0 3.41 1 4.22 2.44h.56C12.09 5 
+                       13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 
+                       11.54L12 21.35z"
+              />
+            </svg>
+            {post.quantidadeAmeis}
+          </button>
         </div>
+
+        <hr />
+
+        <div className={styles.commentsSection}>
+          <h2 className={styles.commentsTitle}>Comentários</h2>
+          <p className={styles.commentsCount}>{comments.length} comentários</p>
+
+          <ul className={styles.commentList}>
+            {comments.map((comment) => (
+              <li key={comment.id} className={styles.commentItem}>
+                <div className={styles.commentBody}>
+                  <strong>{comment.autor}</strong>
+                  {comment.conteudo}
+                </div>
+
+                <button
+                  onClick={() => toggleCommentLike(comment.id)}
+                  className={styles.commentLikeBtn}
+                >
+                  {comment.liked ? "♥" : "♡"}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <form onSubmit={handleNewComment} className={styles.commentForm}>
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Escreva seu comentário..."
+              required
+              className={styles.commentTextarea}
+            />
+            <button type="submit">Comentar</button>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-);
-};
-
-export default PostDetails;
-
-
-
-
-
+  );
+}
