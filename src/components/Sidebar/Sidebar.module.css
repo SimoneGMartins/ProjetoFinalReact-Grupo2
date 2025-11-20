@@ -13,6 +13,8 @@
   flex-direction: column;
   gap: 16px;
   color: var(--branco);
+  position: relative;
+  min-height: 100vh;
 }
 
 .title {
