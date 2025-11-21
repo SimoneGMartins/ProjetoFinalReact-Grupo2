@@ -1,4 +1,3 @@
-
 .createPostWrapper {
   max-width: 1440px;
   margin: 0 auto;
@@ -10,13 +9,12 @@
 .createPostCard {
   width: 100%;
   max-width: 800px;
- background: #E6E2DC;
+  background: #E6E2DC;
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
-
 
 .createPostTitle {
   font-size: 1.7rem;
@@ -31,7 +29,6 @@
   gap: 1.4rem;
 }
 
-
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -43,7 +40,6 @@
   font-weight: 500;
   color: var(--text-primary);
 }
-
 
 .formInput,
 .formTextarea,
@@ -75,7 +71,6 @@
   font-weight: 600;
 }
 
-
 .createPostButton {
   background: var(--primary-green);
   color: white;
@@ -84,6 +79,14 @@
   font-size: 1rem;
   font-weight: 600;
   width: fit-content;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.createPostButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .createPostButton:disabled {
@@ -91,11 +94,70 @@
   cursor: not-allowed;
 }
 
+/* ============================================ */
+/* DARK MODE                                    */
+/* ============================================ */
+
+.dark {
+  background-color: #111;
+}
+
+.dark .createPostCard {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark .createPostTitle {
+  color: #e6e2dc;
+}
+
+.dark .formLabel {
+  color: #e6e2dc;
+}
+
+.dark .formInput,
+.dark .formTextarea,
+.dark .formSelect {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .formInput::placeholder,
+.dark .formTextarea::placeholder {
+  color: #808080;
+}
+
+.dark .formInput:focus,
+.dark .formTextarea:focus,
+.dark .formSelect:focus {
+  border-color: #7a8f7d;
+  box-shadow: 0 0 0 2px rgba(122, 143, 125, 0.25);
+}
+
+.dark .errorMessage {
+  color: #c45555;
+}
+
+.dark .createPostButton {
+  background-color: black;
+  border-color: #f0f0f0;
+}
+
+.dark .createPostButton:hover {
+  background-color: #6a7f6d;
+}
+
+/* ============================================ */
+/* RESPONSIVE                                   */
+/* ============================================ */
 
 @media (max-width: 768px) {
-    .createPostWrapper{
-        padding: 2rem 0 0 2rem;
-    }
+  .createPostWrapper {
+    padding: 2rem 0 0 2rem;
+  }
+
   .createPostCard {
     padding: 1.4rem;
   }

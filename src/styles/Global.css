@@ -37,7 +37,7 @@ body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-html.dark {
+:root.dark {
   --background-main: #111;
   --background-secondary: #222;
   --background-post: #1a1a1a;

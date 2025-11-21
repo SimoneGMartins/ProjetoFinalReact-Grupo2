@@ -12,7 +12,21 @@ export default function PostDetails() {
   const [newComment, setNewComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [userName] = useState("Usuário Anônimo");
+  const [isDark, setIsDark] = useState(false);
 
+  // Observar mudanças no dark mode
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Buscar post e comentários
   useEffect(() => {
     axios
       .get(`${API_BASE}/posts/${id}`)
@@ -28,7 +42,14 @@ export default function PostDetails() {
     setIsLiked(likedPosts.includes(id));
   }, [id]);
 
-  if (!post) return <p>Carregando...</p>;
+  // Loading
+  if (!post) {
+    return (
+      <div className={`${styles.page} ${isDark ? styles.dark : ''}`}>
+        <p className={styles.loading}>Carregando...</p>
+      </div>
+    );
+  }
 
   function toggleLike() {
     if (isLiked) return;
@@ -36,9 +57,7 @@ export default function PostDetails() {
     axios
       .post(`${API_BASE}/posts/${id}/amei`)
       .then(() => {
-        // Atualiza o post no frontend
         axios.get(`${API_BASE}/posts/${id}`).then((res) => setPost(res.data));
-
         setIsLiked(true);
 
         const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
@@ -53,7 +72,6 @@ export default function PostDetails() {
     );
   }
 
-  // Novo comentário
   function handleNewComment(e) {
     e.preventDefault();
 
@@ -74,7 +92,7 @@ export default function PostDetails() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${isDark ? styles.dark : ''}`}>
       <div className={styles.container}>
         <div className={styles.postSection}>
           <h2 className={styles.title}>Post</h2>
@@ -106,7 +124,7 @@ export default function PostDetails() {
           </button>
         </div>
 
-        <hr />
+        <hr className={styles.divider} />
 
         <div className={styles.commentsSection}>
           <h2 className={styles.commentsTitle}>Comentários</h2>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputEmail from "../../components/ui/InputEmail/InputEmail";
 import InputPassword from "../../components/ui/InputPassword/InputPassword";
 import styles from "./login.module.css";
@@ -10,7 +10,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // inicial
+    setIsDark(document.documentElement.classList.contains("dark"));
+
+    // opcional: observar mudanças na classe do html (se o toggle faz alteração)
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,10 +32,13 @@ const Login = () => {
     if (success) navigate("/");
     else setError("Email ou senha incorretos!");
   };
+
   return (
     <section className={styles["loginContainer"]}>
       <h1>Blog Jardim Digital</h1>
-      <div className={styles["loginBox"]}>
+
+      {/* adiciona a classe dark local se necessário */}
+      <div className={`${styles["loginBox"]} ${isDark ? styles["darkBox"] : ""}`}>
         <h2>Bem vindo</h2>
         <form onSubmit={handleSubmit} className={styles["loginForm"]}>
           <InputEmail

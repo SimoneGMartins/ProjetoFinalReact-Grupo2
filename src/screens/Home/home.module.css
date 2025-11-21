@@ -31,10 +31,10 @@
 
 .resultCount {
   padding: 2px 8px;
-  background: var(--background-badge);
+  background: #ECEAE6;
   border-radius: 6px;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: #222;
 }
 
 .newPostButton {
@@ -42,9 +42,9 @@
   align-items: center;
   gap: 8px;
   padding: 9px 13px;
-  background: var(--primary-green);
+  background: #91A394;
   color: white;
-  border: 1px solid var(--border-color);
+  border: 1px solid #E6E2DC;
   border-radius: 8px;
   font-weight: 500;
   font-size: 14px;
@@ -99,7 +99,6 @@
 .clearButton:hover {
   background: var(--background-secondary);
 }
-
 
 .postsGrid {
   display: grid;
@@ -198,28 +197,14 @@
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.2s ease;
-} 
-
-/* Hover no modo claro */
-.readMoreButton:hover {
-  background: var(--background-secondary);
   color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.readMoreButton:hover {
+  background: var(--primary-red);
   transform: translateX(4px);
 }
-
-:root.dark .readMoreButton {
-  background: #222;           
-  color: #fff;
-  border-color: #555;
-}
-
-:root.dark .readMoreButton:hover {
-  background: #333;          
-  color: #fff;              
-}
-
-
 
 .loadMoreSection {
   display: flex;
@@ -262,7 +247,6 @@
 .emptyState p {
   font-size: 14px;
 }
-
 
 .modalOverlay {
   position: fixed;
@@ -359,7 +343,6 @@
   font-weight: 600;
 }
 
-
 .spinner {
   border: 4px solid var(--background-secondary);
   border-top: 4px solid var(--primary-green);
@@ -375,6 +358,191 @@
   100% { transform: rotate(360deg); }
 }
 
+/* ============================================ */
+/* DARK MODE - Quando .dark está no container  */
+/* ============================================ */
+
+.dark {
+  background-color: #111;
+}
+
+.dark .pageHeader {
+  background-color: #1a1a1a;
+  border-color: #404040;
+}
+
+.dark .pageTitle {
+  color: #e6e2dc;
+}
+
+.dark .resultCount {
+  background: #1a1a1a;
+  color: white;
+}
+
+.dark .newPostButton {
+  background: #1a1a1a;
+  border-color: #404040;
+}
+
+.dark .newPostButton:hover {
+  background: #6a7f6d;
+}
+
+.dark .filterSelect {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .filterSelect option {
+  background-color: #2a2a2a;
+  color: #e6e2dc;
+}
+
+.dark .filterInput {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .filterInput::placeholder {
+  color: #808080;
+}
+
+.dark .clearButton {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .clearButton:hover {
+  background-color: #3a3a3a;
+}
+
+.dark .postCard {
+  background-color: #1a1a1a;
+  border-color: #404040;
+}
+
+.dark .postCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .postBadge {
+  background: #1a1a1a;
+}
+
+.dark .postTitle {
+  color: #e6e2dc;
+}
+
+.dark .authorAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.dark .authorName {
+  color: #e6e2dc;
+}
+
+.dark .postDate {
+  color: #808080;
+}
+
+.dark .postExcerpt {
+  color: #b0b0b0;
+}
+
+.dark .readMoreButton {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .readMoreButton:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .loadMoreButton {
+  background: #2a2a2a;
+}
+
+.dark .loadMoreButton:hover {
+  background: #6a7f6d;
+}
+
+.dark .emptyState {
+  color: #808080;
+}
+
+.dark .emptyState h3 {
+  color: #e6e2dc;
+}
+
+.dark .modal {
+  background-color: #2a2a2a;
+  border: 1px solid #404040;
+}
+
+.dark .modalHeader {
+  border-color: #404040;
+}
+
+.dark .modalHeader h3 {
+  color: #e6e2dc;
+}
+
+.dark .closeButton {
+  color: #b0b0b0;
+}
+
+.dark .closeButton:hover {
+  background-color: #3a3a3a;
+}
+
+.dark .modalBody p {
+  color: #b0b0b0;
+}
+
+.dark .modalBody svg {
+  color: #7a8f7d;
+}
+
+.dark .modalFooter {
+  border-color: #404040;
+}
+
+.dark .cancelButton {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .cancelButton:hover {
+  background-color: #3a3a3a;
+}
+
+.dark .loginButton {
+  background: #7a8f7d;
+}
+
+.dark .spinner {
+  border-color: #3a3a3a;
+  border-top-color: #7a8f7d;
+}
+
+/* ============================================ */
+/* RESPONSIVE                                   */
+/* ============================================ */
 
 @media (max-width: 768px) {
   .container {
