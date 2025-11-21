@@ -1,16 +1,32 @@
 .container {
   width: 100%;
+  min-height: calc(100vh - 56px);
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  padding: 30px 20px;
+  background: var(--background-secondary);
+  transition: background 0.3s ease;
 }
 
+.content {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ============================================ */
+/* CARD DE EDIÇÃO DE PERFIL                     */
+/* ============================================ */
+
 .card {
-  width: 70%;
-  background: #fff;
+  width: 100%;
+  background: var(--background-main);
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -19,20 +35,36 @@
 .card h2 {
   font-size: 20px;
   margin-bottom: 5px;
+  color: var(--text-primary);
 }
 
-label {
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card label {
   font-size: 14px;
-  color: #4a4a4a;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
-input {
+.card input {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #e3e3e3;
-  background: #f9f7f4;
+  border: 1px solid var(--border-color);
+  background: var(--background-secondary);
+  color: var(--text-primary);
   font-size: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.card input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(145, 163, 148, 0.25);
 }
 
 .row {
@@ -55,18 +87,354 @@ input {
 }
 
 .save {
-  background: #3a3a3a;
+  background: var(--primary-green);
   color: white;
   padding: 10px 16px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.save:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .cancel {
-  background: transparent;
-  color: #d9534f;
-  border: none;
+  background: var(--primary-red);
+  color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   cursor: pointer;
   padding: 10px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancel:hover {
+  background: red;
+}
+
+/* ============================================ */
+/* SEÇÃO DE POSTS DO USUÁRIO                    */
+/* ============================================ */
+
+.postsSection {
+  width: 100%;
+  background: var(--background-main);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.postsTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 20px;
+  font-size: 1rem;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postItem {
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.postItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.postContent {
+  flex: 1;
+}
+
+.postTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.postBody {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.postDate {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.postActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.editBtn {
+  background: var(--primary-green);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.editBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.deleteBtn {
+  background: var(--primary-red);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background-color: red;
+}
+
+/* ============================================ */
+/* MENSAGEM DE NÃO LOGADO                       */
+/* ============================================ */
+
+.notLogged {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.notLogged p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.notLogged button {
+  background: var(--primary-green);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.notLogged button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ============================================ */
+/* DARK MODE                                    */
+/* ============================================ */
+
+.dark {
+  background-color: #1a1a1a;
+}
+
+.dark .card,
+.dark .postsSection {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark .card h2,
+.dark .postsTitle {
+  color: #e6e2dc;
+}
+
+.dark .card label {
+  color: #b0b0b0;
+}
+
+.dark .card input {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .card input::placeholder {
+  color: #808080;
+}
+
+.dark .card input:focus {
+  border-color: #7a8f7d;
+  box-shadow: 0 0 0 2px rgba(122, 143, 125, 0.25);
+}
+
+.dark .save {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: white;
+}
+
+.dark .save:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .cancel {
+   background-color: #1a1a1a;
+  border-color: #404040;
+  color: white;
+}
+
+.dark .cancel:hover {
+  background-color: red;
+}
+
+.dark .loading,
+.dark .empty {
+  color: #808080;
+}
+
+.dark .postItem {
+  background-color: #1a1a1a;
+  border-color: #404040;
+}
+
+.dark .postItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dark .postTitle {
+  color: #e6e2dc;
+}
+
+.dark .postBody {
+  color: #b0b0b0;
+}
+
+.dark .postDate {
+  color: #808080;
+}
+
+.dark .editBtn {
+   background-color: #111;
+  border-color: white;
+  color: white;
+}
+
+.dark .editBtn:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .deleteBtn {
+   background-color: #111;
+  border-color: #404040;
+  color: white;
+}
+
+.dark .deleteBtn:hover {
+  background-color: red;
+}
+
+.dark .notLogged p {
+  color: #b0b0b0;
+}
+
+.dark .notLogged button {
+  background-color: #7a8f7d;
+}
+
+.dark .notLogged button:hover {
+  background-color: #6a7f6d;
+}
+
+/* ============================================ */
+/* RESPONSIVO                                   */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 16px;
+  }
+
+  .card,
+  .postsSection {
+    padding: 20px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buttons button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .postItem {
+    flex-direction: column;
+  }
+
+  .postActions {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .postTitle {
+    font-size: 15px;
+  }
+
+  .postBody {
+    font-size: 13px;
+  }
 }

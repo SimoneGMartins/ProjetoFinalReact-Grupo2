@@ -12,21 +12,31 @@ const Home = () => {
   const [filterType, setFilterType] = useState('titulo');
   const [searchTerm, setSearchTerm] = useState('');
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem('user');
+
+  
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Buscar posts da API do Render
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-
-        // Busca os posts reais do backend
         const response = await axios.get('https://blogjardim.onrender.com/posts');
         const data = response.data;
 
-        // Como sua API já traz o autor, email e comentários, não precisa buscar de outro lugar
         const formattedPosts = data.map(post => ({
           id: post.id,
           titulo: post.titulo,
@@ -86,14 +96,14 @@ const Home = () => {
 
   if (loading) {
     return (
-      <div className={styles.container}>
-        <div className="spinner"></div>
+      <div className={`${styles.container} ${isDark ? styles.dark : ''}`}>
+        <div className={styles.spinner}></div>
       </div>
     );
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isDark ? styles.dark : ''}`}>
       {/* Cabeçalho */}
       <div className={styles.pageHeader}>
         <div className={styles.titleSection}>

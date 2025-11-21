@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -19,6 +20,19 @@ const schema = yup.object({
 
 export default function CreatePost() {
   const navigate = useNavigate();
+  const [isDark, setIsDark] = useState(false);
+
+  // Observar mudanças no dark mode
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   const {
     register,
@@ -31,7 +45,6 @@ export default function CreatePost() {
   });
 
   const onSubmit = async (data) => {
-    // cons para recupera o usuário logado
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
@@ -60,7 +73,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className={styles.createPostWrapper}>
+    <div className={`${styles.createPostWrapper} ${isDark ? styles.dark : ''}`}>
       <div className={styles.createPostCard}>
         <h1 className={styles.createPostTitle}>Criar Novo Post</h1>
 

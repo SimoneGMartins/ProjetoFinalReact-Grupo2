@@ -1,164 +1,244 @@
-.editpost-container {
+.editpostContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
+  min-height: calc(100vh - 56px);
+  background: var(--background-secondary);
+  color: var(--text-primary);
   padding: 20px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/*  CARTÃO CENTRAL */
-.editpost-card {
-  background: var(--card-bg);
+/* CARTÃO CENTRAL */
+.editpostCard {
+  background: var(--background-main);
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
 }
 
-.editpost-card h1 {
+.editpostCard h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
+  color: var(--text-primary);
 }
 
-/* FORMULÁRIO  */
-.editpost-card form {
+/* FORMULÁRIO */
+.editpostCard form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.editpost-card label {
+.editpostCard label {
   font-weight: 600;
+  color: var(--text-primary);
 }
 
-.editpost-card input,
-.editpost-card textarea {
+.editpostCard input,
+.editpostCard textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: var(--input-bg);
-  color: var(--text);
+  background: var(--background-secondary);
+  color: var(--text-primary);
   font-size: 1rem;
   resize: vertical;
   transition: border-color 0.2s;
 }
 
-.editpost-card input:focus,
-.editpost-card textarea:focus {
-  border-color: var(--accent);
+.editpostCard input:focus,
+.editpostCard textarea:focus {
+  border-color: var(--primary-green);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(145, 163, 148, 0.25);
 }
 
-/*  BOTÕES  */
-.editpost-buttons {
+.editpostCard textarea {
+  min-height: 150px;
+}
+
+/* BOTÕES */
+.editpostButtons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 1rem;
 }
 
-.editpost-buttons button {
-  background: #91A394;
-  color: #fff;
+.editpostButtons button {
   padding: 10px 16px;
   border: none;
   border-radius: 8px;
   font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
+  transition: all 0.2s ease;
 }
 
-.editpost-buttons .save {
- background: #91A394;
-  transform: scale(1.03);
-}
-
-
-.editpost-buttons .save:hover {
-  background: #2563eb;
-  transform: scale(1.02);
-}
-
-
-
-.editpost-buttons .cancel{
-  background: var(--accent);
+.save {
+  background: var(--primary-green);
   color: #fff;
 }
 
-.editpost-buttons.cancel:hover {
-   background: #2563eb;
-  transform: scale(1.02);
+.save:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-/*  MENSAGEM QUANDO NÃO LOGADO  */
-.editpost-message {
-  min-height: 100vh;
+.cancel {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color) !important;
+}
+
+.cancel:hover {
+  background: var(--background-secondary);
+}
+
+/* MENSAGEM QUANDO NÃO LOGADO */
+.editpostMessage {
+  min-height: calc(100vh - 56px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--background-secondary);
+  color: var(--text-primary);
   text-align: center;
   gap: 1rem;
+  padding: 20px;
 }
 
-.editpost-message button {
-  background: var(--accent);
+.editpostMessage p {
+  font-size: 1.1rem;
+}
+
+.editpostMessage button {
+  background: var(--primary-green);
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.editpost-message button:hover {
-  background: #2563eb;
+.editpostMessage button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-/* TEXTO DE CARREGAMENTO  */
-.editpost-loading {
+/* TEXTO DE CARREGAMENTO */
+.editpostLoading {
   text-align: center;
-  margin-top: 50px;
   font-weight: 500;
+  color: var(--text-secondary);
 }
 
-/*  RESPONSIVIDADE */
+/* ============================================ */
+/* DARK MODE                                    */
+/* ============================================ */
+
+.dark {
+  background-color: #111;
+}
+
+.dark .editpostCard {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark .editpostCard h1 {
+  color: #e6e2dc;
+}
+
+.dark .editpostCard label {
+  color: #e6e2dc;
+}
+
+.dark .editpostCard input,
+.dark .editpostCard textarea {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .editpostCard input::placeholder,
+.dark .editpostCard textarea::placeholder {
+  color: #808080;
+}
+
+.dark .editpostCard input:focus,
+.dark .editpostCard textarea:focus {
+  border-color: #7a8f7d;
+  box-shadow: 0 0 0 2px rgba(122, 143, 125, 0.25);
+}
+
+.dark .save {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: white;
+}
+
+.dark .save:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .cancel {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: white;
+}
+
+.dark .cancel:hover {
+  background-color: red;
+}
+
+.dark .editpostMessage {
+  background-color: #1a1a1a;
+  color: #e6e2dc;
+}
+
+.dark .editpostMessage button {
+  background-color: #7a8f7d;
+}
+
+.dark .editpostMessage button:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .editpostLoading {
+  color: #808080;
+}
+
+/* ============================================ */
+/* RESPONSIVO                                   */
+/* ============================================ */
+
 @media (max-width: 600px) {
-  .editpost-card {
+  .editpostCard {
     padding: 1.5rem;
   }
-  .editpost-card h1 {
+
+  .editpostCard h1 {
     font-size: 1.5rem;
   }
-  .editpost-buttons {
+
+  .editpostButtons {
     flex-direction: column;
     align-items: stretch;
   }
-}
 
-/* MODO CLARO / ESCURO */
-:root {
-  --bg: #f3f4f6;
-  --card-bg: #ffffff;
-  --text: #1f2937;
-  --border: #d1d5db;
-  --input-bg: #f9fafb;
-  --accent: #3b82f6;
-}
-
-:root.dark {
-  --bg: #111827;
-  --card-bg: #1f2937;
-  --text: #f9fafb;
-  --border: #374151;
-  --input-bg: #111827;
-  --accent: #60a5fa;
+  .editpostButtons button {
+    width: 100%;
+    text-align: center;
+  }
 }

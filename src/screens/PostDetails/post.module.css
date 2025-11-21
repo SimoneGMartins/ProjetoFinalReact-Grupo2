@@ -1,217 +1,361 @@
 .page {
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-    background: var(--background-main);
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--background-main);
+  min-height: calc(100vh - 56px);
+  transition: background 0.3s ease;
 }
 
 .container {
-    width: 100%;
-    max-width: 880px;
-    background: var(--background-main);
-    padding: 35px 40px;
-    border-radius: 14px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 880px;
+  background: var(--background-main);
+  padding: 35px 40px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  padding: 40px;
 }
 
 .postSection {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 15px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 15px;
 }
 
 .postTitleRepeated {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
 }
 
 .postBlockRepeated {
-    background: var(--background-post);
-    padding: 14px 18px;
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-green);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
+  background: var(--background-post);
+  padding: 14px 18px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-green);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 .likeBtn {
-    background: transparent;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: transform .2s;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
 }
 
 .likeBtn:hover {
-    transform: scale(1.15);
+  transform: scale(1.15);
 }
 
-hr {
-    border: none;
-    border-top: 1px solid var(--border-color);
-    margin: 30px 0;
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 30px 0;
 }
 
 .commentsSection {
-    background: var(--background-secondary);
-    border-radius: 12px;
-    padding: 25px 28px;
-    border: 1px solid var(--border-color);
+  background: var(--background-secondary);
+  border-radius: 12px;
+  padding: 25px 28px;
+  border: 1px solid var(--border-color);
 }
 
 .commentsTitle {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
 .commentsCount {
-    font-size: .9rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
 }
 
 .commentList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .commentItem {
-    background: var(--background-main);
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    padding: 14px 18px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  background: var(--background-main);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .commentBody {
-    max-width: 90%;
+  max-width: 90%;
+  color: var(--text-primary);
 }
 
 .commentBody strong {
-    color: var(--primary-red);
-    font-size: .9rem;
-    display: block;
-    margin-bottom: 4px;
+  color: var(--primary-red);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .commentLikeBtn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 22px;
-    margin-left: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  margin-left: 10px;
+  color: var(--primary-red);
+  transition: transform 0.2s ease;
+}
+
+.commentLikeBtn:hover {
+  transform: scale(1.2);
 }
 
 .commentForm {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
 }
 
 .commentTextarea {
-    width: 100%;
-    min-height: 110px;
-    padding: 14px;
-    border-radius: 10px;
-    background: var(--background-main);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    resize: vertical;
+  width: 100%;
+  min-height: 110px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--background-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  resize: vertical;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.commentTextarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(145, 163, 148, 0.25);
+}
+
+.commentTextarea::placeholder {
+  color: var(--text-secondary);
 }
 
 .commentForm button {
-    width: 160px;
-    padding: 12px;
-    background: var(--primary-green);
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    font-size: 1.05rem;
+  width: 160px;
+  padding: 12px;
+  background: var(--primary-green);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.commentForm button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* Mensagem pedindo login */
 .needLogin {
-    font-size: .9rem;
-    color: var(--text-secondary);
-    margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
 }
 
 /* Botão de login (ícone) */
 .loginBtn {
-    background: transparent;
-    font-size: 28px;
-    margin-top: 15px;
+  background: transparent;
+  font-size: 28px;
+  margin-top: 15px;
 }
+
+/* ============================================ */
+/* DARK MODE                                    */
+/* ============================================ */
+
+.dark {
+  background-color: #111;
+}
+
+.dark .container {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark .title {
+  color: #e6e2dc;
+}
+
+.dark .postTitleRepeated {
+  color: #e6e2dc;
+}
+
+.dark .postBlockRepeated {
+  background-color: #1a1a1a;
+  border-left-color: #7a8f7d;
+  color: #b0b0b0;
+}
+
+.dark .likeBtn {
+  color: #e6e2dc;
+}
+
+.dark .divider {
+  border-top-color: #404040;
+}
+
+.dark .commentsSection {
+  background-color: #1a1a1a;
+  border-color: #404040;
+}
+
+.dark .commentsTitle {
+  color: #e6e2dc;
+}
+
+.dark .commentsCount {
+  color: #808080;
+}
+
+.dark .commentItem {
+  background-color: #2a2a2a;
+  border-color: #404040;
+}
+
+.dark .commentBody {
+  color: #e6e2dc;
+}
+
+.dark .commentBody strong {
+  color: #c45555;
+}
+
+.dark .commentLikeBtn {
+  color: #c45555;
+}
+
+.dark .commentTextarea {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  color: #e6e2dc;
+}
+
+.dark .commentTextarea::placeholder {
+  color: #808080;
+}
+
+.dark .commentTextarea:focus {
+  border-color: #7a8f7d;
+  box-shadow: 0 0 0 2px rgba(122, 143, 125, 0.25);
+}
+
+.dark .commentForm button {
+  background-color: #2a2a2a;
+  border-color: white;
+  color: #e6e2dc;
+}
+
+.dark .commentForm button:hover {
+  background-color: #6a7f6d;
+}
+
+.dark .loading {
+  color: #808080;
+}
+
+/* ============================================ */
+/* RESPONSIVO                                   */
+/* ============================================ */
+
 @media (max-width: 768px) {
-    .container {
-        padding: 22px 20px;
-        border-radius: 10px;
-    }
+  .page {
+    padding: 20px 16px;
+  }
 
-    .postTitleRepeated {
-        font-size: 1.6rem;
-    }
+  .container {
+    padding: 22px 20px;
+    border-radius: 10px;
+  }
 
-    .postBlockRepeated {
-        font-size: 1rem;
-        padding: 12px 14px;
-    }
+  .postTitleRepeated {
+    font-size: 1.6rem;
+  }
 
-    .commentItem {
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px 15px;
-    }
+  .postBlockRepeated {
+    font-size: 1rem;
+    padding: 12px 14px;
+  }
 
-    .commentBody {
-        max-width: 100%;
-    }
+  .commentItem {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 15px;
+  }
 
-    .commentForm button {
-        width: 100%;
-    }
+  .commentBody {
+    max-width: 100%;
+  }
 
-    .likeBtn {
-        font-size: 26px;
-    }
+  .commentForm button {
+    width: 100%;
+  }
 
-    .commentLikeBtn {
-        align-self: flex-end;
-    }
+  .likeBtn {
+    font-size: 26px;
+  }
+
+  .commentLikeBtn {
+    align-self: flex-end;
+  }
 }
 
 @media (max-width: 480px) {
-    .postTitleRepeated {
-        font-size: 1.4rem;
-    }
+  .postTitleRepeated {
+    font-size: 1.4rem;
+  }
 
-    .title, .commentsTitle {
-        font-size: 1.2rem;
-    }
+  .title,
+  .commentsTitle {
+    font-size: 1.2rem;
+  }
 
-    .commentTextarea {
-        min-height: 90px;
-        font-size: 0.95rem;
-    }
+  .commentTextarea {
+    min-height: 90px;
+    font-size: 0.95rem;
+  }
 
-    .container {
-        padding: 18px 16px;
-    }
+  .container {
+    padding: 18px 16px;
+  }
 }

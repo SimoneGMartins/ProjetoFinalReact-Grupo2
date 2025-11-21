@@ -1,15 +1,26 @@
 .loginContainer {
   background-image: url("src/assets/imgFundo.png");
   background-size: cover;
-  position: relative;
-  overflow: hidden;
   background-position: center;
+  position: relative;
   display: flex;
-  min-height: 90vh; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+
+  /* controla a altura sem forçar overflow */
+  min-height: calc(100vh - 130px);
+
+  /* adiciona respiro interno */
+  padding: 40px 20px;
+
+  /* evita qualquer rolagem fantasma */
+  overflow: hidden;
 }
+
+
+/* Overlay escuro sobre a imagem */
 .loginContainer::before {
   content: "";
   position: absolute;
@@ -20,24 +31,23 @@
   background: #1e1e1e52;
   z-index: 1;
 }
+
 .loginContainer h1 {
   margin: 0 0 93px;
   color: #ffffff;
   font-weight: 600;
   font-size: 48px;
-  line-height: 100%;
-  letter-spacing: 0px;
   text-align: center;
-  vertical-align: middle;
   z-index: 2;
 }
+
+/* Caixa do login */
 .loginBox {
   background-color: var(--primary-green);
   padding: 21px;
   border-radius: 10px;
   max-width: 440px;
   width: calc(100% - 42px);
-  height: auto;
   text-align: left;
   border: 1px solid #e6e2dc;
   z-index: 2;
@@ -45,15 +55,13 @@
 }
 
 .loginBox h2 {
-  color: var(--text-primary);
+  color: #e6e2dc;
   font-weight: 600;
   font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  vertical-align: middle;
-  margin: 0 0 16px;
+  margin-bottom: 16px;
 }
 
+/* Botão principal */
 .buttonSubmit {
   cursor: pointer;
   padding: 10px 13px;
@@ -63,10 +71,14 @@
   color: var(--background-main);
   font-weight: 500;
   font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  vertical-align: middle;
+  transition: all 0.3s ease;
 }
+
+.buttonSubmit:hover {
+  opacity: 0.9;
+}
+
+/* Links abaixo do botão */
 .containerLinks {
   display: flex;
   justify-content: space-between;
@@ -77,18 +89,21 @@
   color: #e6e2dc;
   font-weight: 500;
   font-size: 13px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  vertical-align: middle;
   text-decoration: none;
-  padding: 0 12px 0 0;
+  padding-right: 12px;
 }
 
+.containerLinks a:hover {
+  text-decoration: underline;
+}
+
+/* Responsivo */
 @media (max-width: 640px) {
   .loginContainer h1 {
     margin: 0 0 64px;
     font-size: 36px;
   }
+
   .loginBox {
     margin: 0 16px;
     width: calc(100% - 42px - 32px);
@@ -98,54 +113,32 @@
     width: 100%;
     margin-bottom: 8px;
   }
+
   .containerLinks {
     flex-direction: column;
   }
 }
-html.dark .loginContainer::before {
-  background: #00000088;
-}
 
-html.dark .loginBox {
-  background-color: var(--background-secondary);
-  border-color: var(--border-color);
-  color: var(--text-primary);
-}
-
-html.dark .loginBox h2 {
-  color: var(--text-primary);
-}
-
-html.dark .buttonSubmit {
-  background-color: var(--primary-red);
-  color: white;
-}
-
-html.dark .containerLinks a {
-  color: var(--text-secondary);
-}
-.loginContainer {
-  width: 100%;
-  min-height: calc(105vh - 180px);
-  overflow-x: hidden;
-}
-
-html.dark .loginContainer::before {
-  background: #0000008a; 
-}
-
-html.dark .loginBox {
-  background-color: #2b2b2b;
-  border-color: #444;
+/* Estilo local para aplicar no modo dark */
+.darkBox {
+  background-color: black; 
+  border-color: white;
   color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
 }
 
-html.dark .buttonSubmit {
-  background-color: #8a4d4d;
+
+.darkBox h2 {
+  color: #f5f5f5;
+}
+
+
+.darkBox .buttonSubmit {
+  background-color: white;
   border-color: #666;
-  color: #fff;
+  color: black;
 }
 
-html.dark .containerLinks a {
-  color: #ddd;
+.darkBox .containerLinks a {
+  color: white;
 }
