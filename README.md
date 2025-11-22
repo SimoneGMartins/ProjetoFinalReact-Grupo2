@@ -202,7 +202,6 @@ ProjetoFinalReact-Grupo2/
 - Amanda Lisboa Ramos
 - Bruno Ireno do Nascimento
 - Lucas Gomes
-- Renan Melo
 - Simone Gomes Martins
 
 ## 📄 Licença
